@@ -43,9 +43,9 @@ hdr "Encryption and partitions"
 
 hdr2 "Wiping"
 
-#cryptsetup open --type plain -d /dev/urandom -- "$DISK" to_be_wiped
-#dd if=/dev/zero of=/dev/mapper/to_be_wiped  status=progress bs=1M
-#cryptsetup close to_be_wiped
+cryptsetup open --type plain -d /dev/urandom -- "$DISK" to_be_wiped
+dd if=/dev/zero of=/dev/mapper/to_be_wiped  status=progress bs=1M
+cryptsetup close to_be_wiped
 
 hdr2 "Partitioning"
 parted -- "$DISK" mklabel gpt
